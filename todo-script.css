@@ -1,0 +1,22 @@
+// Select the necessary DOM elements
+const addBtn = document.getElementById('add-btn');
+const todoInput = document.getElementById('todo-input');
+const todoList = document.getElementById('todo-list');
+
+// Function to add a new task
+addBtn.addEventListener('click', function() {
+    const task = todoInput.value;
+
+    if (task.trim() !== '') {
+        const li = document.createElement('li');
+        li.innerHTML = `${task} <button onclick="removeTask(this)">Remove</button>`;
+        todoList.appendChild(li);
+        todoInput.value = ''; // Clear input field
+    }
+});
+
+// Function to remove a task
+function removeTask(button) {
+    const li = button.parentElement;
+    todoList.removeChild(li);
+}
